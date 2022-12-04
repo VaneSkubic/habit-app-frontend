@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthHeader } from 'react-auth-kit'
+import Search from './Search'
 
 const LeftSidebar = () => {
 
@@ -32,12 +33,13 @@ const LeftSidebar = () => {
     return (
         <div className='bg-neutral-100 border-r-2 w-1/3 flex pt-16 justify-center'>
             <div className='w-2/3 flex flex-col gap-4'>
+                <Search />
                 <h1 className='text-lg font-bold'>Your habits:</h1>
                 <div className='flex flex-col gap-1'>
                     {
                         habitsData && habitsData.map((habit) => {
                             return (
-                                <h2>{habit.name}</h2>
+                                <h2 className='bg-white w-fit p-2 rounded-md'>{habit.name}</h2>
                             )
                         })
                     }
