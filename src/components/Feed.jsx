@@ -39,9 +39,13 @@ const Feed = () => {
             <Search />
             {data.map((post) => {
                 return <Post
+                    key={post.id}
                     name={post.user.first_name.concat(' ', post.user.last_name)}
                     caption={post.caption}
-                    habit={post.habit.name} />
+                    habit={post.habit.name}
+                    image={post.media.media_url}
+                    profile={post.user.media.media_url}
+                />
             })
             }
             {/* <Post name='Janez primer' caption='Lorem ipsum dolor sit amet' habit='Teeth flossing' /> */}

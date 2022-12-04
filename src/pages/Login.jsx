@@ -7,8 +7,8 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const [email, setEmail] = useState('second')
-    const [password, setPassword] = useState('second')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [showError, setShowError] = useState(false)
 
