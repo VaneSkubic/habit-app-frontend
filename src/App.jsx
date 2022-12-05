@@ -10,7 +10,7 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={
+          <Route index element={
             <RequireAuth loginPath="/login">
               <HomePage />
             </RequireAuth>

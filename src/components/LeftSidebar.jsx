@@ -11,7 +11,7 @@ const LeftSidebar = () => {
     const getUserInfo = async () => {
 
         try {
-            const response = await fetch('http://192.168.64.115:8000/api/habits', {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/habits', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,10 @@ const LeftSidebar = () => {
                     {
                         habitsData && habitsData.map((habit) => {
                             return (
-                                <h2 className='bg-white w-fit p-2 rounded-md'>{habit.name}</h2>
+                                <h2
+                                    key={habit.id}
+                                    className='bg-white w-fit p-2 rounded-md'
+                                >{habit.name}</h2>
                             )
                         })
                     }

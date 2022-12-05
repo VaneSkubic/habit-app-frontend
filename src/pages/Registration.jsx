@@ -21,7 +21,7 @@ const Registration = () => {
         e.preventDefault()
 
         try {
-            const response = await fetch('http://192.168.64.115:8000/api/register', {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

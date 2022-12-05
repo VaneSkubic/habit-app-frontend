@@ -17,8 +17,10 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
 
+        console.log(process.env.REACT_APP_BASE_URL)
+
         try {
-            const response = await fetch('http://192.168.64.115:8000/api/login', {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,7 +29,7 @@ const Login = () => {
                 body: JSON.stringify({
                     email: email,
                     password: password
-                })
+                }),
             })
             const parseRes = await response.json()
 

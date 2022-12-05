@@ -14,7 +14,7 @@ const RightSidebar = () => {
     const getUserInfo = async () => {
 
         try {
-            const response = await fetch('http://192.168.64.115:8000/api/user', {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const RightSidebar = () => {
     const logOut = async () => {
 
         try {
-            await fetch('http://192.168.64.115:8000/api/logout', {
+            await fetch(process.env.REACT_APP_BASE_URL + '/logout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

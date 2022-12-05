@@ -13,7 +13,7 @@ const Feed = () => {
     const getFeed = async () => {
 
         try {
-            const response = await fetch('http://192.168.64.115:8000/api/feed', {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/feed', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,8 +44,8 @@ const Feed = () => {
                     name={post.user.first_name.concat(' ', post.user.last_name)}
                     caption={post.caption}
                     habit={post.habit.name}
-                    image={post.media.media_url}
-                    profile={post.user.media.media_url}
+                    image={post.media?.media_url}
+                    profile={post.user.media?.media_url}
                 />
             })
             }
