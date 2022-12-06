@@ -1,21 +1,17 @@
 import React, { useState } from 'react'
 import { useAuthHeader } from 'react-auth-kit'
 
-const CreatePost = ({ visible, setVisible }) => {
+const CreatePost = () => {
 
     const [caption, setCaption] = useState('')
-    const [image, setImage] = useState(null)
-
-    const selectImage = async (e) => {
-        setImage(e.target.files[0])
-    }
+    const [image, setImage] = useState([])
 
     const authHeader = useAuthHeader()
 
-    const onSubmit = async (e) => {
-        e.preventDefault()
+    const onSubmit = async () => {
 
         try {
+            console.log(image)
             var data = new FormData()
             data.append('media', image)
             data.append('caption', caption)
@@ -23,7 +19,6 @@ const CreatePost = ({ visible, setVisible }) => {
             const response = await fetch(process.env.REACT_APP_BASE_URL + '/posts/create', {
                 method: 'POST',
                 headers: {
-                    // 'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': `${authHeader()}`
                 },
@@ -50,7 +45,7 @@ const CreatePost = ({ visible, setVisible }) => {
                     </div>
                 </div>
                 <div className='pb-4'>
-                    <input type='file' accept='image/jpg, image/jpeg' onClick={selectImage} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' />
+                    <input type='file' accept='image/jpg, image/png, image/jpeg' onClick={(e) => setImage(e.target.files[0])} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' />
                 </div>
                 <div className='flex justify-end'>
                     <button onClick={onSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
