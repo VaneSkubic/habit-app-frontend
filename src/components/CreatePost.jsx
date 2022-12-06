@@ -15,7 +15,6 @@ const CreatePost = () => {
 
         try {
             var data = new FormData()
-            console.log(image)
             data.append('media', image)
             data.append('caption', caption)
             data.append('habit_id', habitId)
@@ -28,8 +27,6 @@ const CreatePost = () => {
                 body: data,
             })
             const parseRes = await response.json()
-
-            console.log(parseRes)
 
         } catch (err) {
             console.log(err.message)
