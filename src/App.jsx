@@ -7,8 +7,7 @@ import { RequireAuth } from 'react-auth-kit'
 function App() {
   return (
     <div className="App h-screen">
-
-      <BrowserRouter>
+      <BrowserRouter basename="/habit-app-frontend">
         <Routes>
           <Route index element={
             <RequireAuth loginPath="/login">

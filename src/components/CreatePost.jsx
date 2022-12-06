@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useAuthHeader } from 'react-auth-kit'
 import Search from './Search'
 
-const CreatePost = () => {
+const CreatePost = ({ onMakePost }) => {
 
     const [caption, setCaption] = useState('')
     const [image, setImage] = useState([])
@@ -31,6 +31,13 @@ const CreatePost = () => {
             })
             const parseRes = await response.json()
 
+            onMakePost()
+
+            setCaption('')
+            setHabitId(null)
+            setHabitName(null)
+            setImage(null)
+
         } catch (err) {
             console.log(err.message)
         }
@@ -50,8 +57,8 @@ const CreatePost = () => {
                 </div>
                 {visible &&
                     <>
-                        <div className="flex justify-start">
-                            <div className="">
+                        <div className="flex justify-center">
+                            <div className="flex w-full">
                                 <div className="input-group relative flex flex-wrap items-stretch w-full">
                                     <input onChange={(e) => setCaption(e.target.value)} type="text" className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Caption" aria-label="Search" aria-describedby="button-addon2" />
                                 </div>
@@ -61,7 +68,7 @@ const CreatePost = () => {
                             {habitName}
                         </div> : <Search setHabitId={setHabitId} setHabitName={setHabitName} />}
                         <div className='pb-4'>
-                            <input type='file' accept='image/jpg, image/png, image/jpeg' onChange={(e) => setImage(e.target.files[0])} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' />
+                            <input type='file' accept='image/jpg, image/png, image/jpeg' onChange={(e) => setImage(e.target.files[0])} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-4 rounded' />
                         </div>
                         <div className='flex justify-end'>
                             <button disabled={habitId === undefined} onClick={onSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>

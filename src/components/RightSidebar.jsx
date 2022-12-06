@@ -57,7 +57,7 @@ const RightSidebar = () => {
             <div className='w-2/3 flex flex-col gap-4 justify-between'>
                 <div className='flex flex-col gap-8'>
                     <div className="flex flex-row items-center">
-                        <img className="w-10 h-10 rounded-full mr-4" src={userData?.media.media_url} alt="" />
+                        <img className="w-10 h-10 rounded-full mr-4" src={userData?.media?.media_url} alt="" />
                         <h3>{userData?.first_name} {userData?.middle_name} {userData?.last_name}</h3>
                     </div>
                 </div>

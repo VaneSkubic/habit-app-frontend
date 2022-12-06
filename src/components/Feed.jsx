@@ -36,7 +36,7 @@ const Feed = () => {
 
     return (
         <div className='py-8 gap-4 w-full h-full overflow-y-scroll flex flex-col items-center '>
-            <CreatePost />
+            <CreatePost onMakePost={getFeed} />
             {data.map((post) => {
                 return <Post
                     key={post.id}

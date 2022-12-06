@@ -11,7 +11,7 @@ const LeftSidebar = () => {
     const getUserInfo = async () => {
 
         try {
-            const response = await fetch(process.env.REACT_APP_BASE_URL + '/habits', {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/user/habits', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,6 +20,7 @@ const LeftSidebar = () => {
             })
             const parseRes = await response.json()
             setHabitsData(parseRes.data)
+            console.log(parseRes)
 
         } catch (err) {
 
