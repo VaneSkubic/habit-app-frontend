@@ -31,7 +31,7 @@ const LeftSidebar = () => {
     }, [])
 
     return (
-        <div className='bg-neutral-100 border-r-2 w-1/3 flex pt-16 justify-center'>
+        <div className='bg-neutral-100 border-r-2 w-1/3 flex pt-16 justify-center overflow-y-auto'>
             <div className='w-2/3 flex flex-col gap-4'>
                 <Search />
                 <h1 className='text-lg font-bold'>Your habits:</h1>

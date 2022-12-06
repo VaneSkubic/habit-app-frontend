@@ -48,7 +48,6 @@ const Feed = () => {
                 />
             })
             }
-            {/* <Post name='Janez primer' caption='Lorem ipsum dolor sit amet' habit='Teeth flossing' /> */}
         </div>
     )
 }
