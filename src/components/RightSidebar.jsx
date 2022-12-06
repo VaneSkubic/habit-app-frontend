@@ -1,6 +1,6 @@
 import React from 'react'
 import profile from '../assets/profile.jpg'
-import Modal from './Modal'
+import Modal from './CreatePost'
 import { useState, useEffect } from 'react'
 import { useSignOut, useAuthHeader } from 'react-auth-kit'
 

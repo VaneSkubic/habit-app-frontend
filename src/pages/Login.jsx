@@ -17,8 +17,6 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(process.env.REACT_APP_BASE_URL)
-
         try {
             const response = await fetch(process.env.REACT_APP_BASE_URL + '/login', {
                 method: 'POST',

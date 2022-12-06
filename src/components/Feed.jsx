@@ -1,8 +1,7 @@
 import Post from './Post'
-import Search from './Search'
 import { useAuthHeader } from 'react-auth-kit'
 import { useEffect, useState } from 'react'
-import Modal from './Modal'
+import CreatePost from './CreatePost'
 
 const Feed = () => {
 
@@ -37,7 +36,7 @@ const Feed = () => {
 
     return (
         <div className='py-8 gap-4 w-full h-full overflow-y-scroll flex flex-col items-center '>
-            <Modal />
+            <CreatePost />
             {data.map((post) => {
                 return <Post
                     key={post.id}
