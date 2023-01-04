@@ -33,6 +33,10 @@ const Feed = () => {
         getFeed()
     }, [])
 
+    const removePost = (id) => {
+        setData(data.filter(post => post.id !== id))
+    }
+
 
     return (
         <div className='py-8 gap-4 w-full h-full overflow-y-scroll flex flex-col items-center '>
@@ -40,11 +44,13 @@ const Feed = () => {
             {data.map((post) => {
                 return <Post
                     key={post.id}
+                    id={post.id}
                     name={post.user.first_name.concat(' ', post.user.last_name)}
                     caption={post.caption}
                     habit={post.habit.name}
                     image={post.media?.media_url}
                     profile={post.user.media?.media_url}
+                    onRemovePost={removePost}
                 />
             })
             }

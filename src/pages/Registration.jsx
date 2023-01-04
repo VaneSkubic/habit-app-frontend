@@ -42,7 +42,7 @@ const Registration = () => {
 
             signIn({
                 token: parseRes.token,
-                authState: { email: parseRes.user.email },
+                authState: { email: parseRes.user.email, isAdmin: parseRes.user.is_admin },
                 expiresIn: 3600,
                 tokenType: 'Bearer'
             })
