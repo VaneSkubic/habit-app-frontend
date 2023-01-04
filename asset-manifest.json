@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/habit-app-frontend/static/css/main.1dd05377.css",
-    "main.js": "/habit-app-frontend/static/js/main.96a53b4d.js",
+    "main.css": "/habit-app-frontend/static/css/main.b5989a41.css",
+    "main.js": "/habit-app-frontend/static/js/main.cbd8c537.js",
     "static/js/787.e73e6529.chunk.js": "/habit-app-frontend/static/js/787.e73e6529.chunk.js",
     "index.html": "/habit-app-frontend/index.html",
-    "main.1dd05377.css.map": "/habit-app-frontend/static/css/main.1dd05377.css.map",
-    "main.96a53b4d.js.map": "/habit-app-frontend/static/js/main.96a53b4d.js.map",
+    "main.b5989a41.css.map": "/habit-app-frontend/static/css/main.b5989a41.css.map",
+    "main.cbd8c537.js.map": "/habit-app-frontend/static/js/main.cbd8c537.js.map",
     "787.e73e6529.chunk.js.map": "/habit-app-frontend/static/js/787.e73e6529.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1dd05377.css",
-    "static/js/main.96a53b4d.js"
+    "static/css/main.b5989a41.css",
+    "static/js/main.cbd8c537.js"
   ]
 }
