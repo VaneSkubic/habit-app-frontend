@@ -62,7 +62,7 @@ const Post = ({ name, caption, habit, image, profile, id, onRemovePost }) => {
             </div>
         )
     } else {
-        return <CreatePost setEditableCaption={setEditableCaption} name={name} src={profile} edit={true} setEditable={setEditable} existingCaption={caption} habit={habit} />
+        return <CreatePost id={id} setEditableCaption={setEditableCaption} name={name} src={profile} edit={true} setEditable={setEditable} existingCaption={caption} habit={habit} />
     }
 }
 

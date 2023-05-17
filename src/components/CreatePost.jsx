@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useAuthHeader } from 'react-auth-kit'
 import Search from './Search'
 
-const CreatePost = ({ onMakePost, edit = false, setEditable, setEditableCaption, existingCaption = '', habit, name = '', src = '' }) => {
+const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCaption, existingCaption = '', habit, name = '', src = '' }) => {
 
     const [caption, setCaption] = useState('')
     const [image, setImage] = useState([])
@@ -25,13 +25,14 @@ const CreatePost = ({ onMakePost, edit = false, setEditable, setEditableCaption,
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Authorization': `${authHeader()}`
+                    'Authorization': `${authHeader()}`,
+                    'Access-Control-Allow-Origin': '*'
                 },
                 body: data,
             })
             const parseRes = await response.json()
 
-            onMakePost()
+            console.log(parseRes)
 
             setCaption('')
             setHabitId(null)
@@ -46,31 +47,32 @@ const CreatePost = ({ onMakePost, edit = false, setEditable, setEditableCaption,
 
     const onSubmitEdit = async () => {
 
-        // try {
-        //     var data = new FormData()
-        //     data.append('media', image)
-        //     data.append('caption', caption)
-        //     data.append('habit_id', habitId)
-        //     const response = await fetch(process.env.REACT_APP_BASE_URL + '/posts/create', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Authorization': `${authHeader()}`
-        //         },
-        //         body: data,
-        //     })
-        //     const parseRes = await response.json()
+        try {
+            var data = new FormData()
+            data.append('caption', caption)
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/posts/' + id, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `${authHeader()}`
+                },
+                body: data,
+            })
+            // console.log(data)
+            const parseRes = await response.json()
 
-        //     onMakePost()
+            console.log(parseRes)
 
-        //     setCaption('')
-        //     setHabitId(null)
-        //     setHabitName(null)
-        //     setImage(null)
+            onMakePost()
 
-        // } catch (err) {
-        //     console.log(err.message)
-        // }
+            setCaption('')
+            setHabitId(null)
+            setHabitName(null)
+            setImage(null)
+
+        } catch (err) {
+            console.log(err.message)
+        }
 
         setEditable(false)
         setEditableCaption(caption)

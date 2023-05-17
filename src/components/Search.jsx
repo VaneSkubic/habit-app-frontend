@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthHeader } from 'react-auth-kit'
 
-const Search = ({ setHabitId, setHabitName }) => {
+const Search = ({ setHabitId, setHabitName, followHabit }) => {
 
     const [data, setData] = useState([])
     const [query, setQuery] = useState('*')
@@ -51,6 +51,9 @@ const Search = ({ setHabitId, setHabitName }) => {
                             key={habit.id}
                             className='px-4 py-2 hover:cursor-pointer hover:pl-5 transition-all'
                             onClick={function () {
+                                if (followHabit) {
+                                    followHabit(habit.id, habit.name)
+                                }
                                 if (setHabitId) {
                                     setHabitId(habit.id)
                                 }
