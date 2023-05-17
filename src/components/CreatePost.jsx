@@ -26,7 +26,6 @@ const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCapt
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `${authHeader()}`,
-                    'Access-Control-Allow-Origin': '*'
                 },
                 body: data,
             })
@@ -51,19 +50,14 @@ const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCapt
             var data = new FormData()
             data.append('caption', caption)
             const response = await fetch(process.env.REACT_APP_BASE_URL + '/posts/' + id, {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': `${authHeader()}`
                 },
                 body: data,
             })
-            // console.log(data)
             const parseRes = await response.json()
-
-            console.log(parseRes)
-
-            onMakePost()
 
             setCaption('')
             setHabitId(null)
