@@ -27,6 +27,7 @@ const LeftSidebar = () => {
             }
             setHabitsData([...habitsData, { id: habitId, name: habitName }])
             habitsData.push({ id: habitId, name: habitName })
+            window.location.reload();
         }
 
     }
@@ -47,6 +48,8 @@ const LeftSidebar = () => {
         }
 
         setHabitsData(habitsData.filter((habit) => habit.id !== habitId))
+
+        window.location.reload();
 
     }
 

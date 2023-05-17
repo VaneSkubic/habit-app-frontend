@@ -29,12 +29,12 @@ const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCapt
                 },
                 body: data,
             })
-            const parseRes = await response.json()
 
             setCaption('')
             setHabitId(null)
             setHabitName(null)
             setImage(null)
+            window.location.reload();
 
         } catch (err) {
             console.log(err.message)

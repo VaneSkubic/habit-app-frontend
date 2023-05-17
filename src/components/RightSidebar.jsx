@@ -60,10 +60,10 @@ const RightSidebar = () => {
                     <div className='flex flex-col gap-8'>
                         <div className="flex flex-row items-center">
                             <img className="w-10 h-10 rounded-full mr-4" src={userData?.media?.media_url} alt="" />
-                            <h3>{userData?.first_name} {userData?.middle_name} {userData?.last_name}</h3>
+                            <h3>{authUser().isAdmin === 1 && <span className='text-sm mr-2 font-bold'>Admin</span>}{userData?.first_name} {userData?.middle_name} {userData?.last_name}</h3>
                         </div>
                     </div>
-                    <h3 className='mt-6 font-bold '>{authUser().isAdmin === 1 ? 'Admin' : 'User'}</h3>
+
                 </div>
                 <button onClick={logOut} className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
                     Log out

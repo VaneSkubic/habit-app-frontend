@@ -2,7 +2,7 @@ import { useAuthUser, useAuthHeader } from 'react-auth-kit'
 import { useState } from 'react'
 import CreatePost from './CreatePost'
 
-const Post = ({ name, caption, habit, image, profile, id, onRemovePost, userId }) => {
+const Post = ({ name, caption, habit, image, profile, id, onRemovePost, userId, habitId }) => {
 
     const [editable, setEditable] = useState(false)
     const [editableCaption, setEditableCaption] = useState(caption)
@@ -27,6 +27,43 @@ const Post = ({ name, caption, habit, image, profile, id, onRemovePost, userId }
 
     }
 
+    const onDeleteUser = async () => {
+        try {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/users/' + userId, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `${authHeader()}`
+                },
+            })
+
+            console.log("reloading")
+            window.location.reload();
+            console.log("reloaded")
+
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+    const onDeleteHabit = async () => {
+        try {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/habits/' + habitId, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `${authHeader()}`
+                },
+            })
+            const parseRes = await response.json()
+
+            window.location.reload();
+
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
     const authUser = useAuthUser();
 
     if (!editable) {
@@ -40,15 +77,27 @@ const Post = ({ name, caption, habit, image, profile, id, onRemovePost, userId }
                     </div>
                     <div>
                         {authUser().isAdmin === 1 &&
-                            <button onClick={() => {
-                                setEditable(true)
-                            }} className='bg-blue-500 hover:bg-blue-700 mr-4 text-white font-bold py-2 px-4 rounded'>Edit</button>
-                        }
-                        {authUser().isAdmin === 1 &&
-                            <button onClick={() => {
-                                onDelete(id)
-                                onRemovePost(id)
-                            }} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Delete</button>
+                            <div className='flex flex-col items-end'>
+                                <div className='mb-2'>
+                                    <button onClick={() => {
+                                        setEditable(true)
+                                    }} className='bg-blue-500 hover:bg-blue-700 mr-4 text-white font-bold py-2 px-4 rounded'>Edit</button>
+                                    <button onClick={() => {
+                                        onDelete(id)
+                                        onRemovePost(id)
+                                    }} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Delete post</button>
+
+                                </div>
+                                <div>
+                                    <button onClick={() => {
+                                        onDeleteUser()
+                                    }} className='bg-blue-500 hover:bg-blue-700 mr-4 text-white font-bold py-2 px-4 rounded'>Delete user</button>
+                                    <button onClick={() => {
+                                        onDeleteHabit()
+                                    }} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Delete habit</button>
+
+                                </div>
+                            </div>
                         }
                     </div>
                 </div>

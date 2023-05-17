@@ -51,6 +51,8 @@ const Feed = () => {
                     image={post.media?.media_url}
                     profile={post.user.media?.media_url}
                     onRemovePost={removePost}
+                    userId={post.user.id}
+                    habitId={post.habit.id}
                 />
             })
             }
