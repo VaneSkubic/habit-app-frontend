@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthHeader } from 'react-auth-kit'
+import { useAuthHeader, useAuthUser } from 'react-auth-kit'
 import Search from './Search'
 
 const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCaption, existingCaption = '', habit, name = '', src = '' }) => {
@@ -30,8 +30,6 @@ const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCapt
                 body: data,
             })
             const parseRes = await response.json()
-
-            console.log(parseRes)
 
             setCaption('')
             setHabitId(null)
@@ -80,6 +78,8 @@ const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCapt
         setVisible(!visible)
     }
 
+    const authUser = useAuthUser();
+
     if (!edit) {
         return (
             <>
@@ -99,7 +99,7 @@ const CreatePost = ({ id, onMakePost, edit = false, setEditable, setEditableCapt
                             </div>
                             {habitId ? <div className='bg-neutral-200 w-fit p-2 rounded-md'>
                                 {habitName}
-                            </div> : <Search setHabitId={setHabitId} setHabitName={setHabitName} />}
+                            </div> : <Search userLimited={true} id={authUser().id} setHabitId={setHabitId} setHabitName={setHabitName} />}
                             <div className='pb-4'>
                                 <input type='file' accept='image/jpg, image/png, image/jpeg' onChange={(e) => setImage(e.target.files[0])} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-4 rounded' />
                             </div>

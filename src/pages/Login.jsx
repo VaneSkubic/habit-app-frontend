@@ -35,7 +35,7 @@ const Login = () => {
 
             signIn({
                 token: parseRes.token,
-                authState: { email: parseRes.user.email, isAdmin: parseRes.user.is_admin },
+                authState: { email: parseRes.user.email, isAdmin: parseRes.user.is_admin, id: parseRes.user.id },
                 expiresIn: 3600,
                 tokenType: 'Bearer',
             })

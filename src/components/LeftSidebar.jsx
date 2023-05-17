@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthHeader } from 'react-auth-kit'
+import { useAuthHeader, useAuthUser } from 'react-auth-kit'
 import Search from './Search'
 
 const LeftSidebar = () => {
@@ -7,28 +7,24 @@ const LeftSidebar = () => {
     const [habitsData, setHabitsData] = useState()
 
     const authHeader = useAuthHeader()
+    const authUser = useAuthUser()
 
     const followHabit = async (habitId, habitName) => {
 
-        // try {
-        //     const response = await fetch(process.env.REACT_APP_BASE_URL + '/user/habits', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': `${authHeader()}`
-        //         },
-        //         body: JSON.stringify({
-        //             habit_id: habitId
-        //         })
-        //     })
-        //     const parseRes = await response.json()
-        //     console.log(parseRes)
-
-        // } catch (err) {
-
-        // }
-
         if (habitsData.filter((habit) => habit.id === habitId).length === 0) {
+            try {
+                const response = await fetch(process.env.REACT_APP_BASE_URL + '/users/' + authUser().id + '/follow/' + habitId, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': `${authHeader()}`,
+                    },
+                })
+                const parseRes = await response.json()
+
+            } catch (err) {
+
+            }
             setHabitsData([...habitsData, { id: habitId, name: habitName }])
             habitsData.push({ id: habitId, name: habitName })
         }
@@ -37,23 +33,18 @@ const LeftSidebar = () => {
 
     const unfollowHabit = async (habitId) => {
 
-        // try {
-        //     const response = await fetch(process.env.REACT_APP_BASE_URL + '/user/habits', {
-        //         method: 'DELETE',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': `${authHeader()}`
-        //         },
-        //         body: JSON.stringify({
-        //             habit_id: habitId
-        //         })
-        //     })
-        //     const parseRes = await response.json()
-        //     console.log(parseRes)
+        try {
+            const response = await fetch(process.env.REACT_APP_BASE_URL + '/users/' + authUser().id + '/unfollow/' + habitId, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `${authHeader()}`,
+                },
+            })
+            const parseRes = await response.json()
+        } catch (err) {
 
-        // } catch (err) {
-
-        // }
+        }
 
         setHabitsData(habitsData.filter((habit) => habit.id !== habitId))
 
@@ -93,7 +84,7 @@ const LeftSidebar = () => {
                                 <h2
                                     onClick={() => unfollowHabit(habit.id)}
                                     key={habit.id}
-                                    className='bg-white w-fit p-2 rounded-md hover:bg-red-300 cursor-pointer'
+                                    className='w-full bg-white p-2 rounded-md hover:bg-red-300 cursor-pointer'
                                 >{habit.name}</h2>
                             )
                         })

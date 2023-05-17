@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthHeader } from 'react-auth-kit'
 
-const Search = ({ setHabitId, setHabitName, followHabit }) => {
+const Search = ({ setHabitId, setHabitName, followHabit, userLimited = false, id }) => {
 
     const [data, setData] = useState([])
     const [query, setQuery] = useState('*')
@@ -10,8 +10,15 @@ const Search = ({ setHabitId, setHabitName, followHabit }) => {
 
     const searchHabits = async () => {
 
+        var url;
+        if (userLimited) {
+            url = process.env.REACT_APP_BASE_URL + '/users/' + id + '/habits/search/' + query
+        } else {
+            url = process.env.REACT_APP_BASE_URL + '/habits/search/' + query
+        }
+
         try {
-            const response = await fetch(process.env.REACT_APP_BASE_URL + '/habits/search/' + query, {
+            const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

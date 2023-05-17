@@ -2,7 +2,7 @@ import { useAuthUser, useAuthHeader } from 'react-auth-kit'
 import { useState } from 'react'
 import CreatePost from './CreatePost'
 
-const Post = ({ name, caption, habit, image, profile, id, onRemovePost }) => {
+const Post = ({ name, caption, habit, image, profile, id, onRemovePost, userId }) => {
 
     const [editable, setEditable] = useState(false)
     const [editableCaption, setEditableCaption] = useState(caption)
