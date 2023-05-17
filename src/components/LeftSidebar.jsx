@@ -54,5 +54,3 @@ const LeftSidebar = () => {
 }
 
 export default LeftSidebar
-
-// https://server.drek.com/api/posts
