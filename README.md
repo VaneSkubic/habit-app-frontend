@@ -9,11 +9,6 @@ Zaslonske slike spletne aplikacije:
 ![enter image description here](https://github.com/VaneSkubic/habit-app-mobile/blob/master/login.png?raw=true)
 ![enter image description here](https://github.com/VaneSkubic/habit-app-mobile/blob/master/feed.png?raw=true)
 
-Zaslonske slike mobilne aplikacije:
-![enter image description here](https://github.com/VaneSkubic/habit-app-mobile/blob/master/login_mobile.jpg?raw=true)
-![enter image description here](https://github.com/VaneSkubic/habit-app-mobile/blob/master/feed_mobile.jpg?raw=true)
-![enter image description here](https://github.com/VaneSkubic/habit-app-mobile/blob/master/new_post_mobile.jpg?raw=true)
-
 Kratek opis delovanja:
 Aplikacija deluje kot socialno omrežje, kjer uporabniki objavljajo svoje navade in slike, kako te navade opravljajo. Uporabnik si ustvari račun nato pa v aplikaciji izbere katere navade želi spremljati. Na časovnico se mu prikazujejo objave navad, ki jih uporabnik spremlja. Uporabnik lahko naredi tudi novo objavo, v katero napiše opis, označi za katero navado gre in zraven doda tudi sliko. 
 
